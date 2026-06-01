@@ -409,6 +409,24 @@ details[open] .glossary-summary::after {
   color: var(--line);
 }
 
+/* Author credit */
+.author {
+  margin-top: 20px;
+  font-size: 12px;
+  color: var(--line);
+  letter-spacing: .05em;
+}
+
+.app-footer {
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  font-size: 12px;
+  color: var(--line);
+  letter-spacing: .05em;
+  text-align: right;
+}
+
 /* Welcome screen */
 .welcome {
   min-height: 100vh;

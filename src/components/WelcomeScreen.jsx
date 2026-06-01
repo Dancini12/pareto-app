@@ -50,6 +50,8 @@ export function WelcomeScreen({ onStart }) {
             </button>
           ))}
         </div>
+
+        <p className="author">por Marcel Dancini</p>
       </div>
     </div>
   );

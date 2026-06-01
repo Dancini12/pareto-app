@@ -93,6 +93,7 @@ export default function App() {
           submitted={submitted}
         />
       </div>
+      <footer className="app-footer">por Marcel Dancini</footer>
     </div>
   );
 }
