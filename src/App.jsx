@@ -1,15 +1,23 @@
 import { useState, useMemo } from "react";
 import { PRESETS } from "./data/presets";
+import { WelcomeScreen } from "./components/WelcomeScreen";
 import { Glossary } from "./components/Glossary";
 import { DataTable } from "./components/DataTable";
 import { ParetoChart } from "./components/ParetoChart";
 import "./styles/App.css";
 
 export default function App() {
+  const [started, setStarted] = useState(false);
+  const [companyName, setCompanyName] = useState("");
   const [rows, setRows] = useState(PRESETS.reclamacoes.dados);
   const [threshold, setThreshold] = useState(80);
-  const [companyName, setCompanyName] = useState("");
   const [submitted, setSubmitted] = useState(false);
+
+  const handleStart = (name, presetRows = null) => {
+    setCompanyName(name);
+    if (presetRows) setRows(presetRows);
+    setStarted(true);
+  };
 
   const { chartData, vitalCount, vitalShare } = useMemo(() => {
     const limpos = rows
@@ -49,6 +57,10 @@ export default function App() {
   const canSubmit =
     rows.filter((r) => r.categoria.trim() !== "" && Number(r.valor) > 0).length >= 2;
 
+  if (!started) {
+    return <WelcomeScreen onStart={handleStart} />;
+  }
+
   return (
     <div className="wrap">
       <div className="head">
@@ -68,8 +80,6 @@ export default function App() {
           setRows={setRows}
           threshold={threshold}
           setThreshold={setThreshold}
-          companyName={companyName}
-          setCompanyName={setCompanyName}
           canSubmit={canSubmit}
           onSubmit={() => setSubmitted(true)}
           onReset={() => setSubmitted(false)}

@@ -2,7 +2,6 @@ import { PRESETS } from "../data/presets";
 
 export function DataTable({
   rows, setRows, threshold, setThreshold,
-  companyName, setCompanyName,
   canSubmit, onSubmit, onReset,
 }) {
   const update = (i, campo, v) =>
@@ -15,16 +14,6 @@ export function DataTable({
   return (
     <div className="card">
       <h2>Dados</h2>
-
-      <div className="company-field">
-        <label className="field-label" htmlFor="empresa">Empresa</label>
-        <input
-          id="empresa"
-          value={companyName}
-          placeholder="Nome da empresa"
-          onChange={(e) => setCompanyName(e.target.value)}
-        />
-      </div>
 
       <div className="presets">
         {Object.entries(PRESETS).map(([k, p]) => (
