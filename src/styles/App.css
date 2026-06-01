@@ -145,6 +145,15 @@ input:focus {
 
 .del:hover { color: var(--accent); background: #f3ebe2; }
 
+.table-hint {
+  font-size: 11.5px;
+  color: var(--muted);
+  margin-top: 6px;
+  line-height: 1.5;
+}
+
+.table-hint strong { color: var(--ink); }
+
 .add {
   margin-top: 10px;
   width: 100%;

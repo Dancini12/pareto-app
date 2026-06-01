@@ -41,7 +41,7 @@ export function DataTable({
               <td>
                 <input
                   value={r.categoria}
-                  placeholder="Causa / categoria"
+                  placeholder="Ex: Atraso na entrega"
                   onChange={(e) => update(i, "categoria", e.target.value)}
                 />
               </td>
@@ -55,7 +55,7 @@ export function DataTable({
                 />
               </td>
               <td>
-                <button className="del" onClick={() => remove(i)} title="Remover">
+                <button className="del" onClick={() => remove(i)} title="Remover linha">
                   ×
                 </button>
               </td>
@@ -63,6 +63,9 @@ export function DataTable({
           ))}
         </tbody>
       </table>
+      <p className="table-hint">
+        Para remover uma linha, clique no <strong>×</strong> ao lado dela.
+      </p>
       <button className="add" onClick={add}>+ adicionar linha</button>
 
       <div className="thr">
