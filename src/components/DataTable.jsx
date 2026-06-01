@@ -1,6 +1,10 @@
 import { PRESETS } from "../data/presets";
 
-export function DataTable({ rows, setRows, threshold, setThreshold }) {
+export function DataTable({
+  rows, setRows, threshold, setThreshold,
+  companyName, setCompanyName,
+  canSubmit, onSubmit, onReset,
+}) {
   const update = (i, campo, v) =>
     setRows((prev) =>
       prev.map((r, idx) => (idx === i ? { ...r, [campo]: v } : r))
@@ -11,9 +15,24 @@ export function DataTable({ rows, setRows, threshold, setThreshold }) {
   return (
     <div className="card">
       <h2>Dados</h2>
+
+      <div className="company-field">
+        <label className="field-label" htmlFor="empresa">Empresa</label>
+        <input
+          id="empresa"
+          value={companyName}
+          placeholder="Nome da empresa"
+          onChange={(e) => setCompanyName(e.target.value)}
+        />
+      </div>
+
       <div className="presets">
         {Object.entries(PRESETS).map(([k, p]) => (
-          <button key={k} className="chip" onClick={() => setRows(p.dados)}>
+          <button
+            key={k}
+            className="chip"
+            onClick={() => { setRows(p.dados); onReset(); }}
+          >
             {p.nome}
           </button>
         ))}
@@ -70,6 +89,15 @@ export function DataTable({ rows, setRows, threshold, setThreshold }) {
         />
         <span>%</span>
       </div>
+
+      <button
+        className="btn-gerar"
+        onClick={onSubmit}
+        disabled={!canSubmit}
+        title={!canSubmit ? "Preencha ao menos 2 categorias com valores" : ""}
+      >
+        Gerar Diagrama
+      </button>
     </div>
   );
 }

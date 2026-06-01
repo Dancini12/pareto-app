@@ -1,5 +1,6 @@
 import { useState, useMemo } from "react";
 import { PRESETS } from "./data/presets";
+import { Glossary } from "./components/Glossary";
 import { DataTable } from "./components/DataTable";
 import { ParetoChart } from "./components/ParetoChart";
 import "./styles/App.css";
@@ -7,6 +8,8 @@ import "./styles/App.css";
 export default function App() {
   const [rows, setRows] = useState(PRESETS.reclamacoes.dados);
   const [threshold, setThreshold] = useState(80);
+  const [companyName, setCompanyName] = useState("");
+  const [submitted, setSubmitted] = useState(false);
 
   const { chartData, vitalCount, vitalShare } = useMemo(() => {
     const limpos = rows
@@ -43,17 +46,21 @@ export default function App() {
     return { chartData, vitalCount, vitalShare };
   }, [rows, threshold]);
 
+  const canSubmit =
+    rows.filter((r) => r.categoria.trim() !== "" && Number(r.valor) > 0).length >= 2;
+
   return (
     <div className="wrap">
       <div className="head">
         <div className="kicker">Ferramenta de Qualidade · 80/20</div>
         <h1>Diagrama de Pareto</h1>
         <p className="sub">
-          Digite as categorias e suas frequências. O app ordena, calcula a
-          porcentagem acumulada e destaca as <b>poucas vitais</b> — as poucas
-          causas responsáveis pela maior parte do problema.
+          Identifique as <b>poucas causas</b> responsáveis pela maior parte de
+          um problema — e concentre esforços onde realmente importa.
         </p>
       </div>
+
+      <Glossary />
 
       <div className="grid">
         <DataTable
@@ -61,12 +68,19 @@ export default function App() {
           setRows={setRows}
           threshold={threshold}
           setThreshold={setThreshold}
+          companyName={companyName}
+          setCompanyName={setCompanyName}
+          canSubmit={canSubmit}
+          onSubmit={() => setSubmitted(true)}
+          onReset={() => setSubmitted(false)}
         />
         <ParetoChart
           chartData={chartData}
           threshold={threshold}
           vitalCount={vitalCount}
           vitalShare={vitalShare}
+          companyName={companyName}
+          submitted={submitted}
         />
       </div>
     </div>

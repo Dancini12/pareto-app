@@ -4,7 +4,32 @@ import {
 } from "recharts";
 import { CustomTooltip } from "./CustomTooltip";
 
-export function ParetoChart({ chartData, threshold, vitalCount, vitalShare }) {
+export function ParetoChart({ chartData, threshold, vitalCount, vitalShare, companyName, submitted }) {
+  if (!submitted) {
+    return (
+      <div className="card chart-placeholder">
+        <div className="placeholder-inner">
+          <div className="placeholder-icon">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+              <rect x="4" y="20" width="8" height="24" rx="2" fill="#c4521e" opacity=".9"/>
+              <rect x="16" y="12" width="8" height="32" rx="2" fill="#c4521e" opacity=".7"/>
+              <rect x="28" y="28" width="8" height="16" rx="2" fill="#d8cdb8"/>
+              <rect x="40" y="34" width="8" height="10" rx="2" fill="#d8cdb8"/>
+              <path d="M8 32 L20 20 L32 30 L44 14" stroke="#1c3a4a" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </div>
+          <p>
+            Preencha os dados ao lado e clique em{" "}
+            <strong>Gerar Diagrama</strong> para visualizar os resultados.
+          </p>
+          <span className="placeholder-hint">
+            Você precisa de ao menos 2 categorias com valores preenchidos.
+          </span>
+        </div>
+      </div>
+    );
+  }
+
   const pctCategorias =
     chartData.length > 0
       ? Math.round((vitalCount / chartData.length) * 100)
@@ -12,6 +37,10 @@ export function ParetoChart({ chartData, threshold, vitalCount, vitalShare }) {
 
   return (
     <div className="card">
+      {companyName && (
+        <div className="company-tag">{companyName}</div>
+      )}
+
       <div className="insight">
         {chartData.length > 0 ? (
           <>
