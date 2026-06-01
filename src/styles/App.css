@@ -1,14 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=DM+Sans:wght@400;500;600&display=swap');
 
 :root {
-  --ink: #1c1a17;
-  --paper: #f6f2ea;
-  --card: #fffdf8;
-  --line: #e3dccd;
-  --muted: #a89e8c;
-  --accent: #c4521e;
-  --accent-soft: #e8a07f;
-  --cum: #1c3a4a;
+  --ink: #1a2640;
+  --paper: #f0f4fb;
+  --card: #ffffff;
+  --line: #ccd5e8;
+  --muted: #6b80a8;
+  --accent: #1a2d5a;
+  --accent-soft: #7f99c8;
+  --cum: #c8a030;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -143,7 +143,7 @@ input:focus {
   border-radius: 6px;
 }
 
-.del:hover { color: var(--accent); background: #f3ebe2; }
+.del:hover { color: var(--accent); background: #eaf0fb; }
 
 .table-hint {
   font-size: 11.5px;
@@ -182,8 +182,8 @@ input:focus {
 .thr input { width: 70px; }
 
 .insight {
-  background: linear-gradient(180deg, #fff6ef, #fffdf8);
-  border: 1px solid var(--accent-soft);
+  background: linear-gradient(180deg, #eaf0fb, #f4f7fd);
+  border: 1px solid var(--line);
   border-radius: 12px;
   padding: 14px 16px;
   margin-bottom: 16px;
@@ -352,8 +352,8 @@ details[open] .glossary-summary::after {
   letter-spacing: .1em;
   text-transform: uppercase;
   color: var(--accent);
-  background: #fff0ea;
-  border: 1px solid var(--accent-soft);
+  background: #eef2fa;
+  border: 1px solid var(--line);
   border-radius: 999px;
   padding: 3px 10px;
   margin-bottom: 12px;
@@ -375,7 +375,7 @@ details[open] .glossary-summary::after {
   transition: background .15s, opacity .15s;
 }
 
-.btn-gerar:hover:not(:disabled) { background: #a84118; }
+.btn-gerar:hover:not(:disabled) { background: #0f1e3d; }
 
 .btn-gerar:disabled {
   opacity: .4;
@@ -555,9 +555,9 @@ details[open] .glossary-summary::after {
 
 .auth-error {
   font-size: 13px;
-  color: #a84118;
-  background: #fff0ea;
-  border: 1px solid var(--accent-soft);
+  color: #8b2200;
+  background: #fbeaea;
+  border: 1px solid #e0b0b0;
   border-radius: 8px;
   padding: 9px 12px;
   line-height: 1.4;
@@ -631,7 +631,7 @@ details[open] .glossary-summary::after {
   white-space: nowrap;
 }
 
-.btn-save:hover:not(:disabled) { background: #a84118; }
+.btn-save:hover:not(:disabled) { background: #0f1e3d; }
 .btn-save:disabled { opacity: .5; cursor: not-allowed; }
 
 .btn-back {
