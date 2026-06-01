@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { PRESETS } from "../data/presets";
 
-export function WelcomeScreen({ onStart }) {
+export function WelcomeScreen({ onStart, onBack }) {
   const [name, setName] = useState("");
 
   const handleSubmit = (e) => {
@@ -12,11 +11,10 @@ export function WelcomeScreen({ onStart }) {
   return (
     <div className="welcome">
       <div className="welcome-card">
-        <span className="kicker">Ferramenta de Qualidade · 80/20</span>
+        <span className="kicker">Novo Projeto</span>
         <h1>Diagrama de Pareto</h1>
         <p className="welcome-sub">
-          Identifique as <strong>poucas causas</strong> responsáveis pela maior
-          parte de um problema e concentre esforços onde realmente importa.
+          Informe o nome da empresa para iniciar a análise.
         </p>
 
         <form onSubmit={handleSubmit} className="welcome-form">
@@ -34,24 +32,10 @@ export function WelcomeScreen({ onStart }) {
           <button type="submit" className="btn-gerar" disabled={!name.trim()}>
             Começar análise
           </button>
+          <button type="button" className="btn-back-link" onClick={onBack}>
+            ← Voltar para meus projetos
+          </button>
         </form>
-
-        <hr className="welcome-divider" />
-        <p className="welcome-examples">ou explore um exemplo pronto:</p>
-        <div className="welcome-chips">
-          {Object.entries(PRESETS).map(([k, p]) => (
-            <button
-              key={k}
-              className="chip"
-              type="button"
-              onClick={() => onStart(p.nome, p.dados)}
-            >
-              {p.nome}
-            </button>
-          ))}
-        </div>
-
-        <p className="author">por Marcel Dancini</p>
       </div>
     </div>
   );

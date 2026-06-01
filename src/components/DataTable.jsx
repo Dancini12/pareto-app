@@ -1,5 +1,3 @@
-import { PRESETS } from "../data/presets";
-
 export function DataTable({
   rows, setRows, threshold, setThreshold,
   canSubmit, onSubmit, onReset,
@@ -14,18 +12,6 @@ export function DataTable({
   return (
     <div className="card">
       <h2>Dados</h2>
-
-      <div className="presets">
-        {Object.entries(PRESETS).map(([k, p]) => (
-          <button
-            key={k}
-            className="chip"
-            onClick={() => { setRows(p.dados); onReset(); }}
-          >
-            {p.nome}
-          </button>
-        ))}
-      </div>
 
       <table>
         <thead>
