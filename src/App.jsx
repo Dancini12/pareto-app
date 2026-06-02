@@ -132,13 +132,15 @@ export default function App() {
 
   return (
     <div className="wrap">
+      <div className="app-byline">Criado por Marcel Dancini</div>
+
       <div className="head">
         <div className="head-top">
           <div>
             <div className="kicker">Ferramenta de Qualidade · 80/20</div>
             <h1>Diagrama de Pareto</h1>
           </div>
-          <div className="head-actions">
+          <div className="head-actions no-print">
             <button
               className="btn-save"
               onClick={handleSave}
